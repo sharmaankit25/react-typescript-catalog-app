@@ -1,9 +1,7 @@
 import React from 'react'
-import BreadCrumb from '../components/BreadCrumb'
 
 export default () => (
     <div>
-    <BreadCrumb breadcrumbs={[{link: '/', name: 'Home' }]} />
     <section className="hero is-default is-fullheight-with-navbar">
         <div className="hero-body">
             <div className="container">
