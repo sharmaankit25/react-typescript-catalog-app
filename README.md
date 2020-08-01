@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Application Demo
+
+[Application Demo](https://sharmaankit25.github.io/react-typescript-catalog-app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
