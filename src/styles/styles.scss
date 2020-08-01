@@ -7,6 +7,10 @@ body {
     background-color: '#3198DC';
 }
 
+.is-clickable {
+    cursor: pointer;
+}
+
 .scrolling-wrapper {
     overflow-x: scroll;
     -webkit-overflow-scrolling:touch;

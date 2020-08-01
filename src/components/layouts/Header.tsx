@@ -17,7 +17,9 @@ export interface IActiveLocation {
 
 const Header:FC<IProps> = ({ loadLocations, locations }) => {
     useEffect(() => {
-        loadLocations()
+        if (!locations.length) {
+            loadLocations()
+        }
     }, [loadLocations])
 
     const [active, setActive] = useState("");
@@ -28,7 +30,6 @@ const Header:FC<IProps> = ({ loadLocations, locations }) => {
         setDropdownOpen(!dropdownOpen)
         setActiveLocation(undefined)
     }
-
 
     const toggleNav = () => {
         // evt.preventDefault();
@@ -46,8 +47,6 @@ const Header:FC<IProps> = ({ loadLocations, locations }) => {
     if (!locations.length) {
         return (<div>Loading...</div>)
     }
-
-    console.log(activeLocation)
 
     return (
         <>
@@ -91,12 +90,12 @@ const Header:FC<IProps> = ({ loadLocations, locations }) => {
         {
             activeLocation &&
             <div style={{marginLeft:'73vw'}}>
-            <div className="dropdown is-active">
+            <div className={`dropdown ${activeLocation && 'is-active'}`}>
             <div className="dropdown-menu" id="dropdown-menu3" role="menu">
               <div className="dropdown-content">
               {
                   activeLocation.branches.map((b: any) => (
-                    <Link key={b.name} to="/" className="dropdown-item">
+                    <Link onClick={toggleDropdown} key={b.name} to={`/catalog/${activeLocation.name}/${b.name}`} className="dropdown-item">
                     { b.name }
                     </Link>
                   ))

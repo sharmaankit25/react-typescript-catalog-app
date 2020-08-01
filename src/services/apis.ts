@@ -4,7 +4,7 @@ export default {
         try{
             return new Promise(function(resolve, reject) {
                 // Setting 2000 ms time
-                setTimeout(resolve, 2000);
+                setTimeout(resolve, 1000);
             }).then(function() {
                 return catalog.data
             });
