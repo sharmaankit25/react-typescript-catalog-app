@@ -11,7 +11,7 @@ import CatalogDetailsPage from './pages/CatalogDetailsPage'
 function App() {
   return (
     <Provider store={store}>
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/catalog/:location/:branch" component={CatalogPage} />
