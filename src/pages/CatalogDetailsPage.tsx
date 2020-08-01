@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { connect } from 'react-redux'
 import Card from '../components/Card'
 
@@ -9,7 +9,7 @@ interface IProps {
 
 const CatalogDetailsPage:FC<IProps> = ({ locations }) => {
     let { location, branch, catalog } = useParams()
-    const [catalogDetails, setCatalogDetails] = useState<[]>([])
+const [catalogDetails, setCatalogDetails] = useState<[]>([])
     useEffect(()=> {
         if (locations.length) {
             const lc = locations.find((l: { name: string; }) => l.name === location)

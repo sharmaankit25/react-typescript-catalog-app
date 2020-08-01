@@ -17,9 +17,7 @@ export interface IActiveLocation {
 
 const Header:FC<IProps> = ({ loadLocations, locations }) => {
     useEffect(() => {
-        if (!locations.length) {
-            loadLocations()
-        }
+        loadLocations()
     }, [loadLocations])
 
     const [active, setActive] = useState("");
@@ -75,11 +73,11 @@ const Header:FC<IProps> = ({ loadLocations, locations }) => {
 
             <div className="navbar-dropdown">
                 { locations && locations.map((l: any) => (
-                    <a onClick={e => setActiveLocation(l) } key={l.name}
-                        className={`navbar-item ${ activeLocation?.name === l.name && 'is-active'}`}
+                    <div onClick={() => setActiveLocation(l) } key={l.name}
+                        className={`navbar-item is-clickable ${ activeLocation?.name === l.name && 'has-background-dark has-text-white-bis'}`}
                     >
                     { l.name }
-                    </a>
+                    </div>
                 )) }
             </div>
 

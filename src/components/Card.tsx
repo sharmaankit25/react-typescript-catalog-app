@@ -10,7 +10,7 @@ const Card:FC<IProps> = ({ name, imageUrl }) => (
     <>
     <div className="card-image">
         <figure className="image is-4by3">
-            <img src={imageUrl} />
+            <img src={imageUrl} alt={name}/>
         </figure>
     </div>
     <div className="card-content">
