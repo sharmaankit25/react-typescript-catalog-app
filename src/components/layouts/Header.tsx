@@ -8,12 +8,28 @@ interface IProps {
     loadLocations(): any
 }
 
+export interface IActiveLocation {
+    branches: object [];
+    name: string;
+    dealers_id: string;
+    opco: string;
+  }
+
 const Header:FC<IProps> = ({ loadLocations, locations }) => {
     useEffect(() => {
         loadLocations()
     }, [loadLocations])
 
     const [active, setActive] = useState("");
+    const [dropdownOpen, setDropdownOpen] = useState(false)
+    const [activeLocation, setActiveLocation] = useState< IActiveLocation| undefined>(undefined);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen)
+        setActiveLocation(undefined)
+    }
+
+
     const toggleNav = () => {
         // evt.preventDefault();
         if (active !== "") {
@@ -27,7 +43,14 @@ const Header:FC<IProps> = ({ loadLocations, locations }) => {
         setActive("");
     };
 
+    if (!locations.length) {
+        return (<div>Loading...</div>)
+    }
+
+    console.log(activeLocation)
+
     return (
+        <>
         <nav className="navbar is-info " role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
         <button
@@ -43,29 +66,48 @@ const Header:FC<IProps> = ({ loadLocations, locations }) => {
         <div id="navbarBasicExample" className={`navbar-menu ${active}`}>
         <div className="navbar-start ml-6">
         <Link onClick={closeNav} className="navbar-item" to="/">Home</Link>
-    </div>
+        </div>
 
     <div className="navbar-end mr-6">
-    <div className="navbar-item has-dropdown is-hoverable">
-        <a className="navbar-link">
-        Location
-        </a>
+        <div className={`navbar-item has-dropdown ${dropdownOpen && 'is-active'}`}>
+            <div onClick={toggleDropdown} className="navbar-link">
+            Location
+            </div>
 
-        <div className="navbar-dropdown">
-            <a className="navbar-item">
-                About
-            </a>
-            <a className="navbar-item">
-                Jobs
-            </a>
-            <a className="navbar-item">
-                Contact
-            </a>
+            <div className="navbar-dropdown">
+                { locations && locations.map((l: any) => (
+                    <a onClick={e => setActiveLocation(l) } key={l.name}
+                        className={`navbar-item ${ activeLocation?.name === l.name && 'is-active'}`}
+                    >
+                    { l.name }
+                    </a>
+                )) }
+            </div>
+
         </div>
     </div>
-    </div>
   </div>
-    </nav>
+        </nav>
+        {
+            activeLocation &&
+            <div style={{marginLeft:'73vw'}}>
+            <div className="dropdown is-active">
+            <div className="dropdown-menu" id="dropdown-menu3" role="menu">
+              <div className="dropdown-content">
+              {
+                  activeLocation.branches.map((b: any) => (
+                    <Link key={b.name} to="/" className="dropdown-item">
+                    { b.name }
+                    </Link>
+                  ))
+              }
+
+              </div>
+            </div>
+            </div>
+            </div>
+        }
+        </>
     )
 }
 
