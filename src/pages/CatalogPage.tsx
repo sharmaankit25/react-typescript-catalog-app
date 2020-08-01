@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom";
 import { connect } from 'react-redux'
 import Card from '../components/Card'
+import BreadCrumb from '../components/BreadCrumb'
 
 interface IProps {
     locations: any
@@ -24,6 +25,11 @@ const CatalogPage:FC<IProps> = ({ locations }) => {
         return (<div>Loading Catalog</div>)
     } else {
         return (
+            <>
+            <BreadCrumb breadcrumbs={[
+                {link: '/', name: 'Home' },
+                {link: `/catalog/${location}/${branch}`, name: branch }
+            ]} />
             <div className="columns is-3 is-multiline ">
                 {
                     catalog.map((c: { name: string, image: string }) => (
@@ -37,6 +43,7 @@ const CatalogPage:FC<IProps> = ({ locations }) => {
                     ))
                 }
             </div>
+            </>
         )
     }
 

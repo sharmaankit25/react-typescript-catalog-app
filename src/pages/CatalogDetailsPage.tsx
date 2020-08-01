@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { connect } from 'react-redux'
 import Card from '../components/Card'
+import BreadCrumb from '../components/BreadCrumb'
 
 interface IProps {
     locations: any
@@ -23,6 +24,12 @@ const [catalogDetails, setCatalogDetails] = useState<[]>([])
     }, [locations, location, branch, catalog])
 
     return (
+        <>
+        <BreadCrumb breadcrumbs={[
+            {link: '/', name: 'Home' },
+            {link: `/catalog/${location}/${branch}`, name: branch },
+            {link: `/catalog-details/${location}/${branch}/${catalog}`, name: catalog }
+        ]} />
         <div className="columns is-3 is-multiline ">
                 {
                     catalogDetails.map((c: { name: string, image: string }) => (
@@ -34,6 +41,7 @@ const [catalogDetails, setCatalogDetails] = useState<[]>([])
                     ))
                 }
             </div>
+        </>
     )
 }
 
