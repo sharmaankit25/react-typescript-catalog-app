@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f9781d22e04c4444e6c87e9e19b67b62",
+    "revision": "6caebe972fede07001af0c6915bf3799",
     "url": "/react-typescript-catalog-app/index.html"
   },
   {
-    "revision": "bba99c249e89f970df2a",
+    "revision": "ff94b7aed99ebb0f67b1",
     "url": "/react-typescript-catalog-app/static/css/main.ce194b8a.chunk.css"
   },
   {
-    "revision": "ea24cbd2f91471de0737",
-    "url": "/react-typescript-catalog-app/static/js/2.c544fe19.chunk.js"
+    "revision": "9585c783b1a68b89725f",
+    "url": "/react-typescript-catalog-app/static/js/2.c5353e72.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/react-typescript-catalog-app/static/js/2.c544fe19.chunk.js.LICENSE.txt"
+    "url": "/react-typescript-catalog-app/static/js/2.c5353e72.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bba99c249e89f970df2a",
-    "url": "/react-typescript-catalog-app/static/js/main.30d1c490.chunk.js"
+    "revision": "ff94b7aed99ebb0f67b1",
+    "url": "/react-typescript-catalog-app/static/js/main.f9f9441e.chunk.js"
   },
   {
     "revision": "96480a98154e871284b9",
