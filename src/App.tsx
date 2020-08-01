@@ -9,8 +9,8 @@ import Home from './pages/HomePage'
 function App() {
   return (
     <Provider store={store}>
-    <Header />
     <Router>
+      <Header />
       <Route exact path="/" component={Home} />
     </Router>
     </Provider>
